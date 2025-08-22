@@ -1,0 +1,13 @@
+{
+"companyName": "DefaultCompany",
+"productName": "Crazy Pixel Apocalypse 3",
+"dataUrl": "pixel_warfare.data.unityweb",
+"wasmCodeUrl": "pixel_warfare.wasm.code.unityweb",
+"wasmFrameworkUrl": "pixel_warfare.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"}
+}

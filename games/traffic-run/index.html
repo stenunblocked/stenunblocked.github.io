@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+	  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY0THGFRYS"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Traffic Run - Sten Unblocked</title>
+    <link rel="icon" href="../stennerela.jpg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3054952862534774"
+     crossorigin="anonymous"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #070c23;
+        }
+  #container{
+   top:50%;
+   left:50%;
+   position:absolute;
+   transform: translate(-50%, -50%);
+   /* background:#222c36; */
+   background:#000416;
+   overflow:hidden;
+  }
+  #logo{
+   position: absolute;
+   display:block;
+   top: 50%;
+   left: 50%;
+   min-width:400px;
+   -webkit-transform: translate(-50%,-50%);
+   transform: translate(-50%,-50%);
+   text-align: center;
+   overflow:hidden;
+  }
+  #footer{
+   width:100%;
+   height:40px;
+   bottom:0;
+   left:50%;
+   position:absolute;
+   transform: translate(-50%, 0%);
+   background: linear-gradient(to bottom, #ccc 0%, #fff 100%);
+  }
+  div.button{
+   background: #222c36;
+   padding: 0 8px;
+   text-align: center;
+   border-radius: 3px;
+   color: white;
+   font-weight: bold;
+   text-decoration: none;
+   cursor:pointer;
+  }
+  div.moregames {
+   height: 38px;
+   line-height: 38px;
+   padding: 0 5px;
+   margin: 1px 1px 0 0;
+   float: left;
+   color: #333;
+   text-align: left;
+   font-size: 15px;
+   position: relative;
+   z-index: 10;
+  }
+  div.fullscreen{
+   margin: 1px 1px 0 0;
+   position:absolute;
+   right:5px; 
+   height:38px;
+   line-height:38px;
+   display:inline-flex;
+   font-weight:bold;
+  }
+  div.fullscreen img{
+   padding-left:5px; 
+  }
+  img {
+	position: absolute;
+    top: -5px;
+    left: 20px;
+    width: 20%;
+    height: 15%;
+}
+    </style>
+    <script src="https://sites.google.com/site/123413fbtry/TrafficRun.js"></script>
+    <script type="text/javascript"> 
+       function UnityProgress(gameInstance, progress) {
+    if (!gameInstance.Module) {
+    return;
+    } else if (progress === "complete") {
+    document.getElementById("logo").style.display = "none";
+    document.getElementById("FullscreenImg").style.display = "none";
+     document.getElementById("sitelogo").style.display = "block";
+   return;
+    } else if (progress == 1) {
+   document.getElementById("loadinginfo").innerHTML = "PROCESSING...";
+    } else if (progress > 0) {
+   document.getElementById("loadinginfo").innerHTML = "Loading: " + Math.round(progress * 100) + "%";
+    document.getElementById("sitelogo").style.display = "none";
+    }
+    }
+    var gameInstance = UnityLoader.instantiate("gameContainer", "https://images-docs-opensocial.googleusercontent.com/gadgets/proxy?container=fbk&url=https://sites.google.com/site/123413fbtry/TrafficRun.json", {
+      onProgress: UnityProgress,
+      Module: {
+        onRuntimeInitialized: function() { UnityProgress(gameInstance, "complete") }
+      }
+    });
+      
+      function FitScreen(){
+       var w=440;
+       var h=750;
+       var availWidth=window.innerWidth;
+       var availHeight=window.innerHeight-40;
+    
+       var canvas = document.getElementById("#canvas");
+       if(availWidth/availHeight>w/h){
+         height = availHeight;
+         width = (height*w/h);
+      }else{
+         width = availWidth;
+         height = width*h/w;
+      }
+      canvas.width = width;
+      canvas.height = height;
+       document.getElementById("container").style.width=width + "px";
+       document.getElementById("container").style.height=(height + 40) + "px";
+       document.getElementById("gameContainer").style.width=width + "px";
+       document.getElementById("gameContainer").style.height=height + "px";
+   
+       if(width/height>4/3){
+           document.getElementById("logo").style.height=Math.round(height*0.6) + "px";  
+           document.getElementById("logo").style.width=Math.round(height*0.6*4/3) + "px";
+       }else{
+           document.getElementById("logo").style.width=Math.round(width*0.8) + "px";
+           document.getElementById("logo").style.height=Math.round(width*0.8*3/4) + "px";
+       }
+
+ if(width<400){    document.getElementById("sitelogo").style.display="none";
+ }else{  document.getElementById("sitelogo").style.display="block";
+ }   
+    }
+      </script>
+
+</head>
+<body onFocus="FitScreen();" onLoad="FitScreen();" onResize="FitScreen();">
+<a href="../index.html"><img src="../stennerela.jpg"></a>
+    <div id="container">
+  <div id="gameContainer" height="750px" width="440px"></div>
+        <div id="footer">
+
+                 <div id="sitelogo" onClick='openGameUrl()' style="position:absolute;bottom:5px;left:50%;transform: translate(-50%,0);display:none;cursor:pointer;">
+
+            </div>
+                <div class="fullscreen">Traffic Run - Sten Unblocked <img src="../slope/style/fullscreen.png" width="38" height="38" onclick="gameInstance.SetFullscreen(1);" style="display:none;" id="FullscreenImg"></div>
+            </div>
+            
+            <div id="logo">
+
+
+                <div id="loadinginfo" style="position:absolute;bottom:10px;left:50%;width:50%;max-height:10px;transform: translate(-50%, 0%);color:#a59d96;font-size:14px;">
+                    Loading...
+                </div>
+            </div>
+        </div>
+  <script>
+var game = "/traffic-run/";
+</script>
+<script src="../stenunblockedmain.js"></script>   
+</body>
+</html>

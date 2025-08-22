@@ -1,0 +1,10 @@
+{
+"TOTAL_MEMORY": 1073741824,
+"dataUrl": "https://dl.dropboxusercontent.com/s/s467c8h01855vr3r5jfz6/ItchIO.data-2.unityweb?rlkey=h0gido275t5x0wpudipnx2f2n",
+"asmCodeUrl": "ItchIO.asm.code.unityweb",
+"asmMemoryUrl": "ItchIO.asm.memory.unityweb",
+"asmFrameworkUrl": "ItchIO.asm.framework.unityweb",
+"backgroundUrl": "ItchIO.jpg",
+"splashScreenStyle": "Light",
+"backgroundColor": "#FFFFFF"
+}

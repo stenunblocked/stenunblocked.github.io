@@ -1,0 +1,14 @@
+
+{
+"companyName": "Rivergames",
+"productName": "Wheelie Bike 2",
+"dataUrl": "wheeliebike2_webgl.data.unityweb",
+"asmCodeUrl": "wheeliebike2_webgl.asm.code.unityweb",
+"asmMemoryUrl": "wheeliebike2_webgl.asm.memory.unityweb",
+"asmFrameworkUrl": "wheeliebike2_webgl.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}

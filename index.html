@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Enjoy unblocked games online - Sten Unblocked</title>
+	<link rel="icon" href="logo.png">
+
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+		}
+
+		@font-face {
+		    font-family: "Pricedown";
+		    src: url("Pricedow.ttf") format("truetype");
+		}
+
+		p.logo {
+			font-size: 15vh;
+			font-family: Pricedown;
+			color: white;
+			user-select: none;
+
+			text-shadow: 
+				-0.7vh -0.7vh 0 black,
+				0.7vh -0.7vh 0 black,
+				-0.7vh  0.7vh 0 black,
+				0.7vh  0.7vh 0 black,
+				0px  0px 3vh black; 
+		}
+	</style>
+</head>
+<body>
+
+<div style="height: 20%; width: 100%; display: flex; justify-content: center; align-items: center;">
+<center>
+<p class="logo">sten unblocked</p>
+</center>
+</div>
+
+<div id="container"></div>
+
+<script>
+
+var games = [
+	["/paper-io-3d/", "Paper.io 3D", "paper-io-3d.jpg"],
+	["/geometrydash/", "Geometry Dash", "geometrydash.png"],
+	["/moto-x3m/", "Moto X3M", "moto-x3m.png"],
+	["/moto-x3m-winter/", "Moto X3M Winter Edition", "moto-x3m-winter.webp"],
+	["/moto-x3m-pool-party/", "Moto X3M Pool Party Edition", "moto-x3m-pool-party.webp"],
+	["/drift-hunters/", "Drift Hunters", "drift-hunters.png"],
+	["https://stennen.github.io/games/cookies/", "Cookie Clicker", "cookie-clicker.webp"],
+	["https://stennen.github.io/games/2048/", "2048", "2048.png"],
+	["/wheelie-bike/", "Wheelie Bike 2", "wheelie-bike-2.jpg"],
+	["/bottle-flip-3d/", "Bottle Flip 3D", "bottle-flip-3d-game.png"],
+	["/short-ride/", "Short Ride", "short-ride.jpg"],
+	["/moto-x3m-3/", "Moto X3M 3", "moto-x3m-3.png"],
+	["/moto-x3m-2/", "Moto X3M 2", "moto-x3m-2.webp"],
+	["/slope/", "Slope", "slope-icon.jpg"],
+	["/wheeliebike/", "Wheelie Bike", "wheelie-bikes.png"],
+	["/traffic-run/", "Traffic Run", "traffic-run-online.webp"],
+	["/1v1-lol/", "1v1.LOL", "1v1-lol_1x1.jfif"],
+	//["/drive-mad/", "Drive Mad"],
+	["/pixel-warfare/", "Pixel Warfare", "pixel-warfare_small.webp"],
+	["/hole-io/", "Hole.IO", "hole-io.png"],
+	["/moto-x3m-spookyland/", "Moto X3M Spooky Land Edition", "moto-x3m-spooky-land_1x1-cover.png"],
+	["/tunnel-rush/", "Tunnel Rush", "tunnel-rush.jpg"],
+	["/traffic-mania/", "Traffic Mania", "traffic-mania.webp"],
+	["/happywheels/", "Happy Wheels", "happy-wheels.png"],
+	["/CaseClicker/", "Case Clicker - CSGO", "case-clicker.webp"],
+	["/helix-jump/", "Helix Jump", "helix-jump.webp"],
+	["/paper-io-2/", "Paper.IO 2", "paper-io-2.jfif"],
+	["/snowball-io/", "Snowball.IO", "snowball-io.jpg"],
+	["/fireboy-and-watergirl/", "Fireboy & Watergirl", "fboy-and-wgirl.jpg"],
+	["/gun-spin/", "Gun Spin", "gunspin.webp"],
+	["/overkill-apache/", "Overkill Apache", "apache-overkill.jpg"],
+	["/neon-pong/", "Neon Pong", "neon-pong.webp"],
+	["/drift-hunters/second_mirror.html", "Drift Hunters (2nd Link)", "drift-hunters.png"],
+	["/time-shooter-2/", "Time Shooter 2", "time-shooter-2_1x1-cover.png"],
+	["/jacksmith/", "Jacksmith", "jacksmith.png"],
+	["/stunt-master/", "City Car Driving Simulator: Stunt Master", "city-car-driving-simulator-ultimate_1x1-cover.png"],
+	["/drift-hunters/third_miror.html", "Drift Hunters (3rd Link)", "drift-hunters.png"],
+	["/fruit-merge/", "Fruit Merge", "fruit-merge.jpg"],
+	["/gold-digger/", "Gold Digger FRVR", "gold-digger-frvr_1x1-cover.png"],
+	["/bitlife/", "BitLife Life Simulator", "bitlife.png"],
+	["/moto-run/frame.html", "Moto Traffic Run 3D [BETA]", "moto-run-crazy.png"]
+];
+
+
+function normalize_game_url(gm) {
+    if (gm.startsWith("/")) {
+        gm = "." + gm;
+
+	if (!gm.endsWith(".html")) {
+	        if (!gm.endsWith("index.html")) {
+	            if (!gm.endsWith("/"))
+	                gm = gm + "/";
+	            gm = "./games" + gm + "index.html";
+	        }
+	}
+
+        return gm;
+    }
+
+    return gm;
+}
+
+var container = document.getElementById("container");
+container.innerHTML = '';
+games.sort(function(a,b) {
+    var gameA = a[1].toLowerCase();
+    var gameB = b[1].toLowerCase();
+    if (gameA < gameB)
+        return -1;
+    if (gameA > gameB)
+        return 1;
+    return 0;
+   } );
+for (let i = 0; i < games.length; i++) {
+    let game = games[i];
+    container.innerHTML += '\n<h1><a href="' + normalize_game_url(game[0]) + '">' + game[1] + '</a></h1>'; 
+}
+</script>
+
+<hr>
+
+</body>
+</html>
