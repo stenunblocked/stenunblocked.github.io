@@ -36,7 +36,7 @@ gdsdk= function() {
   function loadJS(FILE_URL, callback) {
     let scriptEle = document.createElement("script");
   
-    scriptEle.setAttribute("src", FILE_URL);
+    //scriptEle.setAttribute("src", FILE_URL);
     scriptEle.setAttribute("type", "text/javascript");
     scriptEle.setAttribute("async", true);
   
