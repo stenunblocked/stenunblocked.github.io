@@ -59,13 +59,7 @@ a:hover:not(.like) {
     filter: drop-shadow(0 0 1rem Blue);
     color: Violet;
 }
-img {
-	width: 500px;
-    position: absolute;
-    top: -12.5%;
-    left: 50%;
-    transform: translateX(-50%);
-}
+
 iframe {
 	border: none;
     width: 70%;
@@ -136,9 +130,25 @@ div.cookieContainer {
 	transform: translateY(25%);
 }
 
+.darkmode {
+	position: absolute;
+    top:10px;
+    right:10px;
+    width: 4rem;
+    height: 4rem;
+    filter: drop-shadow(0 0 0.1rem black);
+    opacity: 1;
+    cursor: pointer;
+}
+
+.darkmode:hover {
+	opacity: 0.7;
+}
 </style>
 </head>
 <body>
+
+<img src="./nightmode.webp" class="darkmode" onclick="ToggleDarkMode()">
 
 <div style="height: 20%; width: 100%; display: flex; justify-content: center; align-items: center;">
 <center>
@@ -314,5 +324,51 @@ gtag('config', 'G-6WY1JFCK3W');
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="/contact/" class="gtatext">Contact</a><br>
 </center>
+
+<script>
+if (getCookie("darkmode")==="")
+	setCookie("darkmode", "0");
+
+function ToggleDarkMode() {
+	let on;
+	if (getCookie("darkmode")==="0")
+		on = "1";
+	else
+		on = "0";
+
+	setCookie("darkmode", on);
+
+	if (on == "1")
+		EnableDarkMode();
+	else
+		DisableDarkMode();
+}
+
+function EnableDarkMode() {
+	document.body.style.filter = 'invert(100%)';
+	document.body.style.backgroundColor = 'black';
+
+
+	const style = document.createElement("style");
+	style.textContent = "a:not(.like) { color: white !important; } a { filter: invert(100%) }" + 
+						"a:hover:not(.like) { filter: drop-shadow(0 0 1rem White) invert(100%); transition: 0.3s; }" +
+						"td { filter: invert(100%)\n }";
+	style.setAttribute("id", "darkmode_style");
+	document.head.appendChild(style);
+}
+
+function DisableDarkMode() {
+	document.body.style.filter = '';
+	document.body.style.backgroundColor = '';
+	document.body.style.backgroundColor = 'white';
+	document.getElementById("darkmode_style").remove();
+}
+
+
+if (getCookie("darkmode") == "1")
+	EnableDarkMode();
+
+</script>
+
 </body>
 </html>

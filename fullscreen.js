@@ -1,10 +1,32 @@
 var _fullscreen = false;
-var _frame = document.getElementById("frame");
+var _frame = document.getElementsByTagName("iframe")[0];
 
 var scrollKeys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 function preventDefault(e) {
   e.preventDefault();
+}
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
 function preventDefaultForScrollKeys(e) {
@@ -73,6 +95,26 @@ function openFullscreen() {
     enableFullscreen();
 }
 
+
+function EnableDarkMode() {
+    document.body.style.filter = 'invert(100%)';
+    document.body.style.backgroundColor = 'black';
+
+
+    const style = document.createElement("style");
+    style.textContent = "a { color: white !important; } a { filter: invert(100%) }" + 
+                        "iframe { filter: invert(100%) }";
+    style.setAttribute("id", "darkmode_style");
+    document.head.appendChild(style);
+}
+
+function DisableDarkMode() {
+    document.body.style.filter = '';
+    document.body.style.backgroundColor = '';
+    document.body.style.backgroundColor = 'white';
+    document.getElementById("darkmode_style").remove();
+}
+
 (function(){
     document.onkeydown=function(event) {
         if (_fullscreen && (event.keyCode === 27 || event.keyCode === 122)) {
@@ -129,3 +171,7 @@ function openFullscreen() {
     }
     document.body.appendChild(ctr);
 })();
+
+
+if (getCookie("darkmode") == "1")
+    EnableDarkMode();
