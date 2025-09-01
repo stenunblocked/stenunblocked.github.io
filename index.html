@@ -5,7 +5,10 @@
      crossorigin="anonymous"></script>
 
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Play free Unblocked games at school that loads in just a few seconds!">
+    <meta name="keywords" content="unblocked games, unblocked games 66, unblocked games school, unblocked games wtf, unblocked games premium, unblocked games sten">
+    <meta name="author" content="Sten">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sten Unblocked - Unblocked Games</title>
 	<link rel="icon" href="logo.png">
 
@@ -39,7 +42,101 @@
 			font-size: 6vh;
 			font-weight: normal;
 		}
+
 	</style>
+<style>
+h1 {
+	font-family: Arial;
+    text-align: center;
+}
+a {
+	filter: drop-shadow(0 0 1rem MediumPurple);
+    transition: 0.3s;
+    opacity: 1;
+    color: Blue;
+}
+a:hover:not(.like) {
+    filter: drop-shadow(0 0 1rem Blue);
+    color: Violet;
+}
+img {
+	width: 500px;
+    position: absolute;
+    top: -12.5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+iframe {
+	border: none;
+    width: 70%;
+    height: 300px;
+}
+a.like {
+	font-size: 15px;
+    position: absolute;
+    color: red;
+}
+.down-arrow {
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    background: transparent;
+    border-top: solid 7px black;
+    border-bottom-width: 0;
+    margin-top:1px;
+    cursor: pointer;
+    position: absolute;
+    right: 30%;
+    transform: translate(1050%) rotate(180deg);
+}
+.sort-container {
+	position: absolute;
+    left: 70%;
+    transform: translate(120%, 10px);
+    display: none;
+}
+table {
+	border-collapse: collapse;
+}
+td, th {
+  border: 3px solid MediumPurple;
+  padding: 8px;
+  user-select: none;
+  transition: 0.3s;
+}
+td:hover {
+	border: 3px solid MediumSeaGreen;
+    cursor: pointer;
+}
+
+html,body {
+	padding: 0;
+    margin: 0;
+}
+
+div.cookieAskCntr {
+	width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 100;
+    float: left;
+}
+
+div.cookieAskBg {
+	bottom: 0;
+    position: fixed;
+    z-index: 10;
+    background-color: white;
+    border: 2px solid gray;
+    height: 150px;
+    width: calc(100% - 4px);
+}
+
+div.cookieContainer {
+	transform: translateY(25%);
+}
+
+</style>
 </head>
 <body>
 
@@ -52,56 +149,87 @@
 
 <p style="font-size: 3vh; font-family: Pricedown; position: absolute; top: 0;">work in progress!</p>
 
+<div class="down-arrow" id="downarrow" onclick="clickDownArrow(this)"></div>
+<div class="sort-container" id="sort-container">
+
+<table>
+  <tr>
+    <td id="sort_alphabet" onclick="clicksort_alphabet(this)">🔤</td>
+    <td id="sort_time" onclick="clicksort_time(this)">🕒</td>
+  </tr>
+</table>
+</div>
+
+
 <center>
 <div id="container"></div>
 </center>
 
 <script>
+var is_clicked = false;
+var el_alpha  = document.getElementById("sort_alphabet");
+var el_time   = document.getElementById("sort_time");
+var downarrow = document.getElementById("downarrow");
 
-var games = [
-	["/paper-io-3d/", "Paper.io 3D", "paper-io-3d.jpg"],
-	["/geometrydash/", "Geometry Dash", "geometrydash.png"],
-	["/moto-x3m/", "Moto X3M", "moto-x3m.png"],
-	["/moto-x3m-winter/", "Moto X3M Winter Edition", "moto-x3m-winter.webp"],
-	["/moto-x3m-pool-party/", "Moto X3M Pool Party Edition", "moto-x3m-pool-party.webp"],
-	["/drift-hunters/", "Drift Hunters", "drift-hunters.png"],
-	["https://stennen.github.io/games/cookies/", "Cookie Clicker", "cookie-clicker.webp"],
-	["https://stennen.github.io/games/2048/", "2048", "2048.png"],
-	["/wheelie-bike/", "Wheelie Bike 2", "wheelie-bike-2.jpg"],
-	["/bottle-flip-3d/", "Bottle Flip 3D", "bottle-flip-3d-game.png"],
-	["/short-ride/", "Short Ride", "short-ride.jpg"],
-	["/moto-x3m-3/", "Moto X3M 3", "moto-x3m-3.png"],
-	["/moto-x3m-2/", "Moto X3M 2", "moto-x3m-2.webp"],
-	["/slope/", "Slope", "slope-icon.jpg"],
-	["/wheeliebike/", "Wheelie Bike", "wheelie-bikes.png"],
-	["/traffic-run/", "Traffic Run", "traffic-run-online.webp"],
-	["/1v1-lol/", "1v1.LOL", "1v1-lol_1x1.jfif"],
-	//["/drive-mad/", "Drive Mad"],
-	["/pixel-warfare/", "Pixel Warfare", "pixel-warfare_small.webp"],
-	["/hole-io/", "Hole.IO", "hole-io.png"],
-	["/moto-x3m-spookyland/", "Moto X3M Spooky Land Edition", "moto-x3m-spooky-land_1x1-cover.png"],
-	["/tunnel-rush/", "Tunnel Rush", "tunnel-rush.jpg"],
-	["/traffic-mania/", "Traffic Mania", "traffic-mania.webp"],
-	["/happywheels/", "Happy Wheels", "happy-wheels.png"],
-	["/CaseClicker/", "Case Clicker - CSGO", "case-clicker.webp"],
-	["/helix-jump/", "Helix Jump", "helix-jump.webp"],
-	["/paper-io-2/", "Paper.IO 2", "paper-io-2.jfif"],
-	["/snowball-io/", "Snowball.IO", "snowball-io.jpg"],
-	["/fireboy-and-watergirl/", "Fireboy & Watergirl", "fboy-and-wgirl.jpg"],
-	["/gun-spin/", "Gun Spin", "gunspin.webp"],
-	["/overkill-apache/", "Overkill Apache", "apache-overkill.jpg"],
-	["/neon-pong/", "Neon Pong", "neon-pong.webp"],
-	["/drift-hunters/second_mirror.html", "Drift Hunters (2nd Link)", "drift-hunters.png"],
-	["/time-shooter-2/", "Time Shooter 2", "time-shooter-2_1x1-cover.png"],
-	["/jacksmith/", "Jacksmith", "jacksmith.png"],
-	["/stunt-master/", "City Car Driving Simulator: Stunt Master", "city-car-driving-simulator-ultimate_1x1-cover.png"],
-	["/drift-hunters/third_miror.html", "Drift Hunters (3rd Link)", "drift-hunters.png"],
-	["/fruit-merge/", "Fruit Merge", "fruit-merge.jpg"],
-	["/gold-digger/", "Gold Digger FRVR", "gold-digger-frvr_1x1-cover.png"],
-	["/bitlife/", "BitLife Life Simulator", "bitlife.png"],
-	["/moto-run/frame.html", "Moto Traffic Run 3D [BETA]", "moto-run-crazy.png"],
-	["/geometry_arrow/", "Geometry Arrow", ""]
-];
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function clicksort_any(el) {
+	el_alpha.setAttribute('style', '');
+    el_time.setAttribute('style', '');
+    el.setAttribute('style', "border: 3px solid green;");
+}
+
+function clicksort_time(el) {
+	clicksort_any(el);
+    sort_games_time();
+    clickDownArrow(downarrow);
+}
+function clicksort_alphabet(el) {
+	clicksort_any(el);
+    sort_games_alphabet();
+    clickDownArrow(downarrow);
+}
+function clickDownArrow(el) {
+	let sort = document.getElementById("sort-container");
+	is_clicked = !is_clicked;
+    if (!is_clicked) {
+    	el.style.transform = 'translate(1050%) rotate(180deg)';
+        sort.style.display = 'none';
+    } else {
+    	el.style.transform = 'translate(1050%)';
+        sort.style.display = 'block';
+    }
+}
+
+if (getCookie("lastSorting")==="") {
+	setCookie("lastSorting", "alphabet", 365);
+}
+</script>
+
+<script src="./games.js"></script>
+
+<script>
+var games_original = games.slice().reverse();
 
 
 function normalize_game_url(gm) {
@@ -122,21 +250,53 @@ function normalize_game_url(gm) {
     return gm;
 }
 
+function sort_games_alphabet() {
+    var container = document.getElementById("container");
+    games.sort(function(a,b) {
+        var gameA = a.name.toLowerCase();
+        var gameB = b.name.toLowerCase();
+        if (gameA < gameB)
+            return -1;
+        if (gameA > gameB)
+            return 1;
+        return 0;
+       } );
+    container.innerHTML = '';
+    for (let i = 0; i < games.length; i++) {
+        let game = games[i];
+        let like = '';
+		
+        container.innerHTML += '\n' + game.htmlify(); 
+    }
+    setCookie("lastSorting", "alphabet");
+}
+
+function sort_games_time() {
+    var container = document.getElementById("container");
+    container.innerHTML = '';
+    for (let i = 0; i < games_original.length; i++) {
+        let game = games_original[i];
+        let like = '';
+
+        container.innerHTML += '\n' + game.htmlify();
+    }
+    setCookie("lastSorting", "time");
+}
+
 var container = document.getElementById("container");
 container.innerHTML = '';
-games.sort(function(a,b) {
-    var gameA = a[1].toLowerCase();
-    var gameB = b[1].toLowerCase();
-    if (gameA < gameB)
-        return -1;
-    if (gameA > gameB)
-        return 1;
-    return 0;
-   } );
-for (let i = 0; i < games.length; i++) {
-    let game = games[i];
-    container.innerHTML += '\n<h1><a href="' + normalize_game_url(game[0]) + '">' + game[1] + '</a></h1>'; 
+
+let lastSort = getCookie("lastSorting");
+
+if (lastSort === "alphabet") {
+	clicksort_alphabet(el_alpha);
+} else if (lastSort === "time") {
+	clicksort_time(el_time);
+} else {
+	clicksort_alphabet(el_alpha);
 }
+
+clickDownArrow(document.getElementById("downarrow"));
 </script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6WY1JFCK3W"></script>
