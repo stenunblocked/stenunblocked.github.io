@@ -68,7 +68,8 @@ function showAds(show) {
         style.textContent = `
 
             .adsbygoogle, .adsbygoogle iframe,
-            .left-side-rail-dismiss-btn, .left-side-rail-edge {
+            .left-side-rail-dismiss-btn, .left-side-rail-edge,
+            .right-side-rail-dismiss-btn, .right-side-rail-edge {
                 display: none !important;
             }
 
