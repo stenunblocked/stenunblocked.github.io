@@ -60,11 +60,22 @@ function enableScroll() {
   window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
+// Used only during fullscreen activation to enhance user experience, preventing ads overlaying the game.
+function showAds(show) {
+    let ads = document.querySelectorAll(".adsbygoogle");
+    if (show) {
+        ads.forEach(ad => ad.style.display = "none");
+    } else {
+        ads.forEach(ad => ad.style.display = "");
+    }
+}
+
 function enableFullscreen() {
     document.body.style.overflow = "hidden";
     _fullscreen = true;
     _frame.setAttribute("class", "fullScreen");
     disableScroll();
+    showAds(0);
 
     if (document.getElementById("fullscrenBackground")) {
         document.getElementById("fullscrenBackground").style.width = '100%';
@@ -77,6 +88,7 @@ function disableFullscreen() {
     _fullscreen = false;
     _frame.setAttribute("class", "");
     enableScroll();
+    showAds(1);
 
     if (document.getElementById("fullscrenBackground")) {
         document.getElementById("fullscrenBackground").style.width = '0';
@@ -175,17 +187,3 @@ function DisableDarkMode() {
 
 if (getCookie("darkmode") == "1")
     EnableDarkMode();
-
-(function() {
-    let el = document.createElement("div");
-    el.id = "ad-container";
-    el.innerHTML = `
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-XXXX"
-         data-ad-slot="YYYY"
-         data-ad-format="auto"></ins>
-  `;
-
-    document.body.appendChild(el);
-})();
