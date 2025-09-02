@@ -178,7 +178,7 @@ if (getCookie("darkmode") == "1")
 
 (function() {
     let el = document.createElement("div");
-    div.id = "ad-container";
+    el.id = "ad-container";
     el.innerHTML = `
     <ins class="adsbygoogle"
          style="display:block"
