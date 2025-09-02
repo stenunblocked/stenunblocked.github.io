@@ -175,3 +175,17 @@ function DisableDarkMode() {
 
 if (getCookie("darkmode") == "1")
     EnableDarkMode();
+
+(function() {
+    let el = document.createElement("div");
+    div.id = "ad-container";
+    el.innerHTML = `
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXX"
+         data-ad-slot="YYYY"
+         data-ad-format="auto"></ins>
+  `;
+
+    document.body.appendChild(el);
+})();
