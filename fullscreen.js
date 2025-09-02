@@ -67,8 +67,8 @@ function showAds(show) {
         style.id = 'hideAdsStyle';
         style.textContent = `
 
-            .adsbygoogle {
-                display: none;
+            .adsbygoogle, .adsbygoogle iframe {
+                display: none !important;
             }
 
         `;
