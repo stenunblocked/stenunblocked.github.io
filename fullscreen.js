@@ -63,10 +63,24 @@ function enableScroll() {
 // Used only during fullscreen activation to enhance user experience, preventing ads overlaying the game.
 function showAds(show) {
     let ads = document.querySelectorAll(".adsbygoogle");
+
     if (!show) {
-        ads.forEach(ad => ad.style.display = "none");
+        let style = document.createElement("style");
+        style.id = 'hideAdsStyle';
+        style.textContent = `
+
+            .adsbygoogle {
+                display: none;
+            }
+
+        `;
+        
+        document.appendChild(style);
     } else {
-        ads.forEach(ad => ad.style.display = "");
+        let el = document.getElementById("hideAdsStyle");
+
+        if (el)
+            el.remove();
     }
 }
 
