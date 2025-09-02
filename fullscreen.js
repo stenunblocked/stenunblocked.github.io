@@ -63,7 +63,7 @@ function enableScroll() {
 // Used only during fullscreen activation to enhance user experience, preventing ads overlaying the game.
 function showAds(show) {
     let ads = document.querySelectorAll(".adsbygoogle");
-    if (show) {
+    if (!show) {
         ads.forEach(ad => ad.style.display = "none");
     } else {
         ads.forEach(ad => ad.style.display = "");
