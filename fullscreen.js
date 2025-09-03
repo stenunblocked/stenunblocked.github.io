@@ -62,7 +62,7 @@ function enableScroll() {
 
 function AddNewStyle() {
     return;
-    
+
     let el = document.createElement('link');
     el.rel = 'stylesheet';
     el.href = '../beststyle.css';
@@ -184,32 +184,38 @@ function DisableDarkMode() {
 
 (function(){
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && _fullscreen) {
-            closeFullscreen();
+        if (event.key === "Escape") {
+            if (document.fullscreenElement)
+                document.exitFullscreen();
         } else if (event.key === "F11") {
             event.preventDefault();
-            if (!_fullscreen) 
-                openFullscreen();
-            else 
-                closeFullscreen();
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
         }
     });
 
-    document.addEventListener("fullscreenchange", () => {
-        _fullscreen = !!document.fullscreenElement;
-        if (!_fullscreen) 
-            disableFullscreen();
-        else
-            enableFullscreen();
-    });
+    function onFullscreenChange() {
+        _fullscreen = !!(document.fullscreenElement ||
+                         document.webkitFullscreenElement ||
+                         document.mozFullScreenElement ||
+                         document.msFullscreenElement);
 
-    document.addEventListener("webkitfullscreenchange", () => {
-        _fullscreen = !!document.webkitFullscreenElement;
-        if (!_fullscreen) 
-            disableFullscreen();
-        else
+        if (_fullscreen) {
             enableFullscreen();
-    });
+            console.log("fullscreen opened");
+        } else {
+            disableFullscreen();
+            console.log("fullscreen closed");
+        }
+    }
+
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+    document.addEventListener("mozfullscreenchange", onFullscreenChange);
+    document.addEventListener("MSFullscreenChange", onFullscreenChange);
 
     let el = document.createElement('p');
     document.body.appendChild(el);
