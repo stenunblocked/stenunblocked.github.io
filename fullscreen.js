@@ -61,6 +61,8 @@ function enableScroll() {
 }
 
 function AddNewStyle() {
+    return;
+    
     let el = document.createElement('link');
     el.rel = 'stylesheet';
     el.href = '../beststyle.css';
