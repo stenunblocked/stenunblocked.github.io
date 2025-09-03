@@ -1,5 +1,5 @@
 var _fullscreen = false;
-var _frame = document.getElementsByTagName("iframe")[0];
+var _frame = document.getElementById("gameFrame");
 
 var scrollKeys = {37: 1, 38: 1, 39: 1, 40: 1};
 
