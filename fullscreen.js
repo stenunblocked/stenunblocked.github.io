@@ -136,6 +136,17 @@ function disableFullscreen() {
     }
 }
 
+function closeFullscreen() {
+    if (document.exitFullscreen)
+        document.exitFullscreen();
+    else if (document.webkitExitFullscreen)
+        document.webkitExitFullscreen();
+    else if (document.msExitFullscreen)
+        document.msExitFullscreen();
+
+    disableFullscreen();
+}
+
 function openFullscreen() {
     if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
@@ -170,24 +181,29 @@ function DisableDarkMode() {
 }
 
 (function(){
-    document.onkeydown=function(event) {
-        if (_fullscreen && (event.keyCode === 27 || event.keyCode === 122)) {
-            disableFullscreen();
-            setTimeout(() => document.exitFullscreen(), 1000);
-        } else if (!_fullscreen && event.keyCode === 122) {
-            enableFullscreen();
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && _fullscreen) {
+            closeFullscreen();
+        } else if (event.key === "F11") {
+            event.preventDefault();
+            if (!_fullscreen) 
+                openFullscreen();
+            else 
+                closeFullscreen();
         }
-    }
+    });
 
-    window.onresize = function(e) {
-        if (isFullscreen() || (!(!window.screenTop && !window.screenY) && (window.innerWidth == screen.width && window.innerHeight == screen.height))) {
-            if (!_fullscreen) {
-                enableFullscreen();
-            }
-        } else if (_fullscreen) {
+    document.addEventListener("fullscreenchange", () => {
+        _fullscreen = !!document.fullscreenElement;
+        if (!_fullscreen) 
             disableFullscreen();
-        }
-    }
+    });
+
+    document.addEventListener("webkitfullscreenchange", () => {
+        _fullscreen = !!document.webkitFullscreenElement;
+        if (!_fullscreen) 
+            disableFullscreen();
+    });
 
     let el = document.createElement('p');
     document.body.appendChild(el);
@@ -204,7 +220,9 @@ function DisableDarkMode() {
     el.style.userSelect = 'none';
     el.outerHTML = '<div style="text-align:right;width:100%;height:100%;"><a href="../index.html" style="width:100%;height:100%">' + el.outerHTML + '</a></div>';
 
-    window.onresize(null);
+    _fullscreen = !!document.fullscreenElement;
+    if (_fullscreen) 
+        enableFullscreen();
     _frame.contentWindow.document.addEventListener("keydown", document.onkeydown);
 
     let ctr = document.createElement("center");
