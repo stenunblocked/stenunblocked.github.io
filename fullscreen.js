@@ -197,12 +197,16 @@ function DisableDarkMode() {
         _fullscreen = !!document.fullscreenElement;
         if (!_fullscreen) 
             disableFullscreen();
+        else
+            enableFullscreen();
     });
 
     document.addEventListener("webkitfullscreenchange", () => {
         _fullscreen = !!document.webkitFullscreenElement;
         if (!_fullscreen) 
             disableFullscreen();
+        else
+            enableFullscreen();
     });
 
     let el = document.createElement('p');
