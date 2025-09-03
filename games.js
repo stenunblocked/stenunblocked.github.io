@@ -62,6 +62,6 @@ var games = [
 	new Game("/fruit-merge/", "Fruit Merge", "fruit-merge.jpg"),
 	new Game("/gold-digger/", "Gold Digger FRVR", "gold-digger-frvr_1x1-cover.png"),
 	new Game("/bitlife/", "BitLife Life Simulator", "bitlife.png"),
-	new Game("/moto-run/frame.html", "Moto Traffic Run 3D [BETA]", "moto-run-crazy.png"),
+	new Game("/moto-run/frame.html", "Moto Traffic Run 3D", "moto-run-crazy.png"),
 	new Game("/geometry_arrow/", "Geometry Arrow", "../geometry_arrow/boot_splash.png", new Date(2025, 8, 31))
 ];

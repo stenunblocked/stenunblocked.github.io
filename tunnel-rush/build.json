@@ -6,7 +6,7 @@
 "wasmFrameworkUrl": "tunnel_rush_v9wasmframework.unityweb",
 "asmCodeUrl": "tunnel_rush_v9code.unityweb",
 "asmMemoryUrl": "tunnel_rush_v9memory.unityweb",
-"asmFrameworkUrl": "tunnel_rush_v9framework.unityweb",
+"asmFrameworkUrl": "tunnel_rush_unadified_framwork.unityweb",
 "TOTAL_MEMORY": 268435456,
 "graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},

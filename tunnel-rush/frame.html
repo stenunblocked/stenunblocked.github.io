@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6WY1JFCK3W"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Tunnel Rush - Sten Unblocked</title>
+    <link rel="icon" href="../stennerela.jpg">
+    <link rel="stylesheet" href="../slope/style/style.css">
+        <style>
+    h3 {
+      font-size: 20px;
+        font-family: Arial;
+    }
+
+    html, body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .webgl-content, #gameContainer, canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+    <style>
+      #preroll, #adsCode {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+    </style>
+    <script>
+      
+function UnityProgress(gameInstance, progress) {
+  if (!gameInstance.Module)
+    return;
+  if (!gameInstance.logo) {
+    gameInstance.logo = document.createElement("div");
+    gameInstance.logo.className = "logo " + gameInstance.Module.splashScreenStyle;
+    gameInstance.container.appendChild(gameInstance.logo);
+  }
+  if (!gameInstance.progress) {    
+    gameInstance.progress = document.createElement("div");
+    gameInstance.progress.className = "progress " + gameInstance.Module.splashScreenStyle;
+    gameInstance.progress.empty = document.createElement("div");
+    gameInstance.progress.empty.className = "empty";
+    gameInstance.progress.appendChild(gameInstance.progress.empty);
+    gameInstance.progress.full = document.createElement("div");
+    gameInstance.progress.full.className = "full";
+    gameInstance.progress.appendChild(gameInstance.progress.full);
+    gameInstance.container.appendChild(gameInstance.progress);
+  }
+  gameInstance.progress.full.style.width = (100 * progress) + "%";
+  gameInstance.progress.empty.style.width = (100 * (1 - progress)) + "%";
+  if (progress == 1)
+    gameInstance.logo.style.display = gameInstance.progress.style.display = "none";
+}
+    </script>
+    <script src="../1v1-lol/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "build.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="gameContainer"></div>
+    </div>
+<script>
+var game = "/tunnel-rush/";
+</script>
+<script src="../stenunblockedmain.js"></script>
+  </body>
+</html>

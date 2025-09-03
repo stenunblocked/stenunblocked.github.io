@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6WY1JFCK3W"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Wheelie Bike 2 - Sten Unblocked</title>
+    <link rel="stylesheet" href="../slope/style/style.css">
+    <link rel="icon" href="../stennerela.jpg">
+        <style>
+    h3 {
+      font-size: 20px;
+        font-family: Arial;
+    }
+
+    html, body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .webgl-content, #gameContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+    <script src="../slope/UnityProgress.js"></script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="gameContainer"></div>
+    </div>
+
+    <script src="UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "wheeliebike2_webgl.json", {onProgress: UnityProgress});
+    </script>
+
+    <script src="../resizewebgl.js"></script>
+  </body>
+</html>

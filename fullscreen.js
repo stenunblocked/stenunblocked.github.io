@@ -60,6 +60,23 @@ function enableScroll() {
   window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
+function AddNewStyle() {
+    let el = document.createElement('link');
+    el.rel = 'stylesheet';
+    el.href = '../beststyle.css';
+    el.type = 'text/css';
+    el.id = 'beststyle';
+
+    document.head.appendChild(el);
+}
+
+function RemoveNewStyle() {
+    let el = document.getElementById("beststyle");
+
+    if (el)
+        el.remove();
+}
+
 // Used only during fullscreen activation to enhance user experience, preventing ads overlaying the game.
 function showAds(show) {
     if (!show) {
@@ -97,6 +114,15 @@ function enableFullscreen() {
     }
 }
 
+function isFullscreen() {
+    return (
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement
+    ) != null;
+}
+
 function disableFullscreen() {
     document.body.style.overflow = "";
     _fullscreen = false;
@@ -132,6 +158,7 @@ function EnableDarkMode() {
                         "iframe { filter: invert(100%) }";
     style.setAttribute("id", "darkmode_style");
     document.head.appendChild(style);
+    RemoveNewStyle();
 }
 
 function DisableDarkMode() {
@@ -139,6 +166,7 @@ function DisableDarkMode() {
     document.body.style.backgroundColor = '';
     document.body.style.backgroundColor = 'white';
     document.getElementById("darkmode_style").remove();
+    AddNewStyle();
 }
 
 (function(){
@@ -152,7 +180,7 @@ function DisableDarkMode() {
     }
 
     window.onresize = function(e) {
-        if (!(!window.screenTop && !window.screenY) && (window.innerWidth == screen.width && window.innerHeight == screen.height)) {
+        if (isFullscreen() || (!(!window.screenTop && !window.screenY) && (window.innerWidth == screen.width && window.innerHeight == screen.height))) {
             if (!_fullscreen) {
                 enableFullscreen();
             }
@@ -196,6 +224,22 @@ function DisableDarkMode() {
         ctr.appendChild(el); 
     }
     document.body.appendChild(ctr);
+
+    // For games which looks best in a mobile aspect ratio
+    if (typeof mobile !== 'undefined') {
+        let style = document.createElement("style");
+        style.textContent = `
+
+            iframe:not(.fullScreen) {
+                height: 80% !important;
+                width: calc(80% * 0.3) !important;
+            }
+
+        `;
+        document.body.appendChild(style);
+    }
+
+    AddNewStyle();
 })();
 
 
